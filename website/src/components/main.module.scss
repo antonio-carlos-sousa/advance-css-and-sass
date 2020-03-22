@@ -1,0 +1,225 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+CSS do curso usado da outra vez
+
+$btnWhiteColor: #777;
+$btnBoxShadowColor: rgba(0, 0, 0, 0.2);
+
+.Header {
+    height: 95vh; // 95% of view port
+    background-image: linear-gradient(to right bottom,
+        rgba(126, 213, 111, 0.8),
+        rgba(40, 180, 133, 0.8)),
+        url('../../asset/img/hero.jpg'); // para colocar o gradient 
+    //o bom approach é usar outro background image como nós já tinhamos o fundo, colocamos dois
+    // através da virgula!! to right bottom é a indicação de onde começa e onde acaba o gradient
+    background-size: cover; // try feet the element on the box
+    background-position: top; // a parte de cima fica sempre fixa e só o bottom é que move
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.LogoBox {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.Logo {
+    height: 35px;
+}
+
+.textBox {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%); //utilizado para conseguirmos centrar uma box
+    // exactamente no centro, tanto na vertical como na horizontal
+
+    text-align: center;
+}
+
+.HeadingPrimary {
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+
+    //backface-visibility: hidden; // para evitar o shake que todo o elemento faz após a animação
+    // no meu caso vai ficar comentado, porque não acontece.
+}
+
+.HeadingPrimaryMain {
+    display: block; // ocupa toda a row e faz um line break
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; // start fast and end slower
+
+    // animation-delay: 1s;
+    // animation-iteration-count: 2;
+}
+
+.HeadingPrimarySub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+    animation: moveInRight 1s ease-out;
+}
+
+//visited quando voltamos a página num link que já carregamos ele fica roxo 
+
+.Btn:link,
+.Btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block; // a diferença é que só ocupa o espaço dele em vez de preencher a linha toda
+    border-radius: 100px;
+    transition: all .2s;
+    position: relative;
+}
+
+.Btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px $btnBoxShadowColor; // x y quantidade de blur cor
+}
+
+.Btn:active {
+    transform: translateY(-1px); // em relação sempre ao estado inicial
+    box-shadow: 0 5px 10px $btnBoxShadowColor;
+}
+
+.BtnWhite {
+    background-color: #ffffff;
+    color: $btnWhiteColor
+}
+
+// utilizar pseudo elements (neste caso o after)
+.Btn::after {
+    content: ""; // para o elemento aparecer no ecrã é necessario usar o content e o display
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    /**
+        position absolute, com top e left etc o elemento vai sempre utilizar a referencia do elemento primeiro
+        que encontrar com position relative (primeiro elemento pai, ofc)
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.BtnWhite::after {
+    background-color: #ffffff;
+}
+
+.Btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+    // basicamente estou a fazer o botão crescer em X e Y e a tornar o mesmo invisivel,
+    // no entanto como no pseudo elemento tenho a transition all .4s vai ser possivel ver
+    // ele a crescer e a desaparecer (dando o efeito que queremos)
+}
+
+.BtnAnimated {
+    animation: moveDownToUp .5s ease-out .75s backwards;
+    // os ultimos dois params são o primeiro de delay e o segundo -> 
+    // animation-fill-mode: backwards -> aplica o primeiro estado da animação antes de ela iniciar 
+}
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveDownToUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+
+*/
+
+$btnWhiteColor: #777;
+$btnBoxShadowColor: rgba(0, 0, 0, 0.2);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: $btnWhiteColor;
+    padding: 30px;
+}
+
+.header {
+    height: 95vh; // Relative to 95% of the height of the viewport*
+    background-image: linear-gradient(to right bottom,
+            rgba(126, 213, 111, 0.8),
+            rgba(40, 180, 133, 0.8)),
+        url('../images/hero.jpg');
+    // para colocar o gradient 
+    // o bom approach é usar outro background image como nós já tinhamos o fundo, colocamos dois
+    // através da virgula!! to right bottom é a indicação de onde começa e onde acaba o gradient
+    background-size: cover; // try fit the image on element (or viewport)
+    background-position: top; // a parte de cima fica sempre fixa e só o bottom é que move
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.logo-box{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
